@@ -1,19 +1,32 @@
 import java.util.Arrays;
 class Ordenador{
-	
 	public void ordenarInsercion(int [] numeros) {
 		int aux;
 		for(int i = 1 ; i < numeros.length ; i++) {
 			aux=numeros[i];
 			
 			for (int j = i-1; j>=0 && numeros[j]>aux; j--) {
-				numeros[j+1]=numeros[j];
+				numeros[j+1]=numeros[j]; 
 				numeros[j]=aux;
 			}//for2
 		}//for1
 	}//metodo
-	
 }//class Ordenador
+
+class OrdenamientoPorSeleccion{
+	public void ordenamientoSeleccion(int []numeros) {
+		for (int i= 0; i<numeros.length; i++) {
+			for(int j = i; j<numeros.length; j++ ) {
+				if (numeros[i]> numeros[j]) {
+					int minimo = numeros[j];
+					numeros[i]=numeros[j];
+					numeros[j]=minimo;
+				}//if
+			}//for
+		}//for
+	}//metodo
+}//class
+
 public class PruebaMetodosOrdenamiento {
 	public static void main(String[] args) {
 		
@@ -24,6 +37,15 @@ public class PruebaMetodosOrdenamiento {
 		
 		o.ordenarInsercion(numeros);//Ordenamiento
 		System.out.println("Numeros ordenados: "+Arrays.toString(numeros));
+		
+			int [] numeros= {6,1,10,2,8,4,6,9};
+	OrdenamientoPorSeleccion ops= new OrdenamientoPorSeleccion();
+	
+	System.out.println("Numeros sin ordenar: "+Arrays.toString(numeros));
+	ops.ordenamientoSeleccion(numeros);
+	System.out.println("Numeros ordenados: "+Arrays.toString(numeros));
+		
+		
 		
 	}//main
 }//class Prueba
