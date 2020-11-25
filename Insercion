@@ -27,6 +27,31 @@ class OrdenamientoPorSeleccion{
 	}//metodo
 }//class
 
+class PruebaQuickSort{
+	public int[] quicksort(int [] array, int izq, int der){
+		int pivote=array[izq];
+		int i=izq, j =der;
+		int aux;
+		while(i<j) {
+			while(array[i]<=pivote && i<j) i++;
+			while(array[j]>pivote) j--;
+				if (i<j) {
+					aux=array[i];
+					array[i]=array[j];
+					array[j]=aux;
+				}//if
+			}
+		array[izq]=array[j];
+		array[j]=pivote;
+		if(izq < j-1)
+			quicksort(array, izq, j-1);
+		if (j+1 < der)
+			quicksort(array, j+1, der);
+		return array;
+	}
+}//class PruebaQuickSort
+
+
 public class PruebaMetodosOrdenamiento {
 	public static void main(String[] args) {
 		
@@ -44,7 +69,11 @@ public class PruebaMetodosOrdenamiento {
 	System.out.println("Numeros sin ordenar: "+Arrays.toString(numeros));
 	ops.ordenamientoSeleccion(numeros);
 	System.out.println("Numeros ordenados: "+Arrays.toString(numeros));
-		
+	
+	PruebaMetodoQuickSort pq = new PruebaMetodoQuickSort();
+		int [] array= {30,12,5,2,8,3,1,7,22};
+		System.out.println("Desordenado: "+Arrays.toString(array));
+		System.out.println("Ordenado: "+Arrays.toString(pq.quicksort(array,0,array.length-1)));
 		
 		
 	}//main
