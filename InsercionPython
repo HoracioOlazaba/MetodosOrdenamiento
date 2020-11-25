@@ -14,6 +14,7 @@ o=Ordenador()
 o.ordenadorInsercion(numeros)
 print("Numeros ordenados: "+str(numeros))
 
+#Metodo Ordenamiento por seleccion
 
 class OrdenamientoPorSeleccion:
     def ordenamientoSeleccion(self, numeros):
@@ -29,3 +30,33 @@ numeros={3,5,1,10,12,15,11}
 print("Numeros sin ordenar: "+str(numeros))
 ops.ordenamientoSeleccion(numeros)
 print("Numeros ordenados: "+str(numeros))
+
+#Metodo QuickSort
+
+class PruebaQuickSort:
+    def Quicksort(self,numeros,izq,der):
+        pivote=numeros[izq]
+        i=izq
+        j=der
+        aux=0
+        while i<j:
+            while numeros[i] <= pivote and i<j:
+                i+=1
+            while numeros[j]>pivote:
+                j-=1
+            if i < j:
+                aux=numeros[i]
+                numeros[i]=numeros[j]
+                numeros[j]=aux
+        numeros[izq]=numeros[j]
+        numeros[j]=pivote
+        if izq < j-1:
+            self.Quicksort(numeros,izq,j-1)
+        if j+1 < der:
+            self.Quicksort(numeros,j+1,der)
+
+quick= PruebaQuickSort();
+numeros=[10,12,5,2,8,3,1,7,22,6,30,4,11,2,9]
+print("Sin ordenar: "+str(numeros))
+quick.Quicksort(numeros,0,len(numeros) -1)
+print("\nOrdenados: "+str(numeros))
