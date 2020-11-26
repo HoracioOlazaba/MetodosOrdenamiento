@@ -60,3 +60,26 @@ numeros=[10,12,5,2,8,3,1,7,22,6,30,4,11,2,9]
 print("Sin ordenar: "+str(numeros))
 quick.Quicksort(numeros,0,len(numeros) -1)
 print("\nOrdenados: "+str(numeros))
+
+class Shellsort:
+    def ordenar(self,numeros):
+        intervalo=len(numeros)/2
+        intervalo=int(intervalo)
+        while(intervalo>0):
+            for i in range(int(intervalo),len(numeros)):
+                j=i-int(intervalo)
+                while(j>=0):
+                    k=j+int(intervalo)
+                    if (numeros[j]<=numeros[k]):
+                        j-=1;
+                    else:
+                        aux=numeros[j]
+                        numeros[j]=numeros[k]
+                        numeros[k]=aux
+                        j-=int(intervalo)
+            intervalo=int(intervalo)/2
+ss=Shellsort()
+numeros=[12,34,54,2,3]
+print(f"Arreglo desordenado:  {numeros}")
+ss.ordenar(numeros)
+print(f"Arreglo ordenado: {numeros}")
